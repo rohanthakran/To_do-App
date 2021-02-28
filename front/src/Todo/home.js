@@ -25,15 +25,17 @@ const Home =() =>{
             }
             else{
                 setTodo(data)
+                
             }
         })
     }
     
     useEffect(() =>{
         loadAllTodo()
+        
     },[todo])
 
-    
+  
 
     const handleTask = title => event =>{
      
@@ -54,8 +56,18 @@ const Home =() =>{
         })
         .catch(console.log("Error in saving data"))
 }
-const onDelete = () =>{
-    
+
+const onDelete = (taskId) =>{
+    remove(taskId)
+    .then(data =>{
+        if(data.error)
+        {
+            console.log(data.error)
+        }
+        else{
+            loadAllTodo(); 
+        }
+    }) 
 }
 
 const data =(event) =>{
@@ -73,18 +85,18 @@ const data =(event) =>{
         <React.Fragment>
         
         <Layout title={title} method={handleTask("title")} onmy={data} place ="What need to be done"/>
-         
+         <div className="container">
      
          {todo.map((task,index) => {
                
              return(
-                 <List key={index} my={task.title}/>
+                 <List key={index} id ={task._id} my={task.title} delte={onDelete}/>
                
              )
          })}
              
        
-  
+         </div>
 
         </React.Fragment>
     )

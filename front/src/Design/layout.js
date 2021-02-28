@@ -7,7 +7,7 @@ const layout =({title,method,onmy,place}) =>{
             <div className="container">
             <h1>Add You all todo</h1>
             
-                <div className="input">
+                <div className="input1">
                     <input type="text" value ={title} onChange ={method}  placeholder={place}></input>
                     <button onClick ={onmy} type="button">Add</button>
                 </div>

@@ -27,7 +27,7 @@ export const allTodo = () =>{
       .catch(err => console.log(err))
 }
 export const remove = (todoId) =>{
-  return fetch(`${API}/task/:${todoId}`,{
+  return fetch(`${API}/todo/${todoId}`,{
     method:"DELETE"
   })
   .then(response =>{

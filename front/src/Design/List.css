@@ -10,11 +10,11 @@
 .input input {
     padding: 15px 60px 15px 15px;
     outline: none;
-    width: 90%;
+    width: 89%;
     border-bottom: 1px solid #ededed;
-    background: rgba(0, 0, 0, 0.003);
+    background: rgba(0, 0, 0, 0.03);
     border: none;
-    font-size: 24px;
+    font-size: 17px;
 }
 ::placeholder {
     color: grey;
@@ -22,11 +22,17 @@
   }
 .input button{
     padding: 10px;
-    font: 14px 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    line-height: 1.4em;
+   
     outline: none;
     cursor: pointer;
     border: none;
     border: 1px solid #ededed;
+    line-height: 1.5em;
+   
+    font-size: 17px;
     
+}
+.input button:hover{
+    background-color: red;
+    color: white;
 }

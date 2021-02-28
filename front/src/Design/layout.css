@@ -3,32 +3,38 @@
     margin: 0 auto;
     background-color:white;
 }
-.input {
+.input1 {
     padding: 20px;
 }
-.input input {
+.input1 input {
     padding: 15px 60px 15px 15px;
     outline: none;
-    width: 90%;
+    width: 89%;
     border-bottom: 1px solid #ededed;
-    background: rgba(0, 0, 0, 0.003);
+    background: #dddddd;
     border: none;
-    font-size: 24px;
+    font-size: 17px;
 }
 ::placeholder {
     color: grey;
  
   }
-.input button{
+.input1 button{
     padding: 10px;
-    font: 14px 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    line-height: 1.4em;
+   
     outline: none;
     cursor: pointer;
     border: none;
     border: 1px solid #ededed;
+    line-height: 1.5em;
+   
+    font-size: 17px;
     
 }
 h1{
     text-align: center;
+}
+
+.input1 button:hover{
+    background-color: chartreuse;
 }

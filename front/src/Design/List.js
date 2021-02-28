@@ -1,15 +1,15 @@
 import React from "react"
 import  "./List.css"
-const List =({my}) =>{
+const List =({my,delte,id}) =>{
     return(
         <React.Fragment>
-         <div className="container">
+         
                 <div className="input">
                     
                      <input type="text" disabled value={my} ></input>
-                    <button  type="button" >Delete</button>
+                    <button onClick={() => {delte(id)}}   type="button" >Delete</button>
                 </div>
-                </div>
+              
         </React.Fragment>
     )
 }
