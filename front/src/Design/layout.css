@@ -1,0 +1,31 @@
+.container{
+    width: 700px;
+    margin: 0 auto;
+    background-color:white;
+}
+.input {
+    padding: 20px;
+}
+.input input {
+    padding: 15px 60px 15px 15px;
+    outline: none;
+    width: 90%;
+    border-bottom: 1px solid #ededed;
+    background: rgba(0, 0, 0, 0.003);
+    border: none;
+    font-size: 24px;
+}
+::placeholder {
+    color: grey;
+ 
+  }
+.input button{
+    padding: 10px;
+    font: 14px 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    line-height: 1.4em;
+    outline: none;
+    cursor: pointer;
+    border: none;
+    border: 1px solid #ededed;
+    
+}
