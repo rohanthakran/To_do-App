@@ -87,6 +87,7 @@ const data =(event) =>{
         <Layout title={title} method={handleTask("title")} onmy={data} place ="What need to be done"/>
          <div className="container">
      
+        <div className="contain">
          {todo.map((task,index) => {
                
              return(
@@ -95,7 +96,7 @@ const data =(event) =>{
              )
          })}
              
-       
+         </div>
          </div>
 
         </React.Fragment>
