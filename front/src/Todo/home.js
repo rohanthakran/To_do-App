@@ -1,8 +1,10 @@
 
-import React ,{useState} from "react";
+import React ,{useState,useEffect} from "react";
 
-import {add} from "..//Controllers/addtodo"
+import {add,allTodo,remove} from "..//Controllers/addtodo"
 import Layout from "../Design/layout"
+import List from "../Design/List"
+
 
 const Home =() =>{
 
@@ -11,49 +13,79 @@ const Home =() =>{
         error:"",
         success : false
     });
+    const [todo,setTodo] =useState([]);
+    const [err, setError] = useState(false);
     const {title,error,success} = value;
 
+    //Get All Todo
+    const loadAllTodo =() =>{
+        allTodo().then(data =>{
+            if(data.error){
+                setError(data.error)
+            }
+            else{
+                setTodo(data)
+            }
+        })
+    }
+    
+    useEffect(() =>{
+        loadAllTodo()
+    },[todo])
+
+    
+
     const handleTask = title => event =>{
+     
         setValues({...value, error : false, [title]: event.target.value})
     }
-    const onSubmit =(event) =>{
-            event.preventDefault();
-            setValues({...value,error : false,});
-            add({title})
-            .then(data =>{
-                if(data.error) {
-                    setValues({ error :data.error} );
-                }
-                else {
-                    setValues({...value,title:"",error:"",success : true})
-                }
-            })
-            .catch(console.log("Error in saving data"))
+    const onSubmit =() =>{
+
+        setValues({...value,error : false,});
+     
+        add({title})
+        .then(data =>{
+            if(data.error) {
+                setValues({ error :data.error} );
+            }
+            else {
+                setValues({...value,title:"",error:"",success : true})
+            }
+        })
+        .catch(console.log("Error in saving data"))
+}
+const onDelete = () =>{
+    
+}
+
+const data =(event) =>{
+    if(value.title === "")
+    {
+        alert("Please Enter somethings")
     }
-    const sucessMessage = () =>{
-  return(      <div 
-        style={{display: error ? "" : "none"}}>
-         aerere
-        </div>)
+    else{
+        event.preventDefault();
+        onSubmit();
     }
+}
+    
     return(
         <React.Fragment>
+        
+        <Layout title={title} method={handleTask("title")} onmy={data} place ="What need to be done"/>
+         
+     
+         {todo.map((task,index) => {
+               
+             return(
+                 <List key={index} my={task.title}/>
+               
+             )
+         })}
+             
+       
+  
 
-        <Layout value={title} onChange={handleTask("title")} onClick={onSubmit}/>
-    
-           <h1>This A title</h1>
-         
-          <form>
-          <label for="task">Add Task</label>
-          <input type="text" id="task" value={title} required onChange={handleTask("title")} ></input>
-                <h1>{value.title}</h1>
-                {sucessMessage()}
-              <button onClick={onSubmit}>Submit</button>
-          
-          </form>
-          <p>{JSON.stringify(value)}</p>
-         
-           
         </React.Fragment>
     )
 }

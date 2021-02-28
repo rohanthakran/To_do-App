@@ -15,3 +15,23 @@ export const add = todo =>{
        .catch(err => console.log(err));
 
 };
+
+export const allTodo = () =>{
+ 
+      return fetch(`${API}/alltodo`,{
+        method:"GET"
+      })
+      .then(response =>{
+        return response.json()
+      })
+      .catch(err => console.log(err))
+}
+export const remove = (todoId) =>{
+  return fetch(`${API}/task/:${todoId}`,{
+    method:"DELETE"
+  })
+  .then(response =>{
+    return response.json()
+  })
+  .catch(err => console.log(err))
+}

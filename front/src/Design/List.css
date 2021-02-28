@@ -3,6 +3,7 @@
     margin: 0 auto;
     background-color:white;
 }
+
 .input {
     padding: 20px;
 }
@@ -28,7 +29,4 @@
     border: none;
     border: 1px solid #ededed;
     
-}
-h1{
-    text-align: center;
 }

@@ -20,16 +20,16 @@ exports.signup = (req, res) => {
       res.json(user);
     });
   };
-exports.createToDo = (req,res) =>{
-    const todo = new Todo(req.body);
-    todo.save().then(() =>{
-        console.log(todo)
-        res.json(todo);
-    })
-    .catch((error) =>{
-        console.log(error);
-    })
-}
+// exports.createToDo = (req,res) =>{
+//     const todo = new Todo(req.body);
+//     todo.save().then(() =>{
+//         console.log(todo)
+//         res.json(todo);
+//     })
+//     .catch((error) =>{
+//         console.log(error);
+//     })
+// }
 // exports.signup= (req,res) =>{
   
 //     const user= new User(req.body);
@@ -76,12 +76,25 @@ exports.getTodoById = (req,res,next,id) =>{
 exports.getTodo = (req,res) =>{
     return res.json(req.task);
 }
+exports.remove = (req,res) =>{
+    const task = req.task;
+    task.remove((err,task) =>{
+        if(err) {
+            return res.status(400).json({
+                errror :"Failed to delete this cate"
+            })
+        }
+        res.json({
+            message : "SuccessFull delte"
+        })
+    })
+}
 
 exports.getAllTask = (req,res) =>{
     Todo.find().exec((err,todos) =>{
         if(err || !todos){
             return res.status(400).json({
-                errror: " No user Found"
+                errror: " No data Found"
             })
         }
         res.json(todos)
